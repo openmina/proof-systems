@@ -98,7 +98,9 @@ impl Keypair {
     pub fn secret_multiply_with_curve_point(&self, multiplicand: CurvePoint) -> CurvePoint {
         use ark_ec::AffineCurve;
         use ark_ec::ProjectiveCurve;
-        multiplicand.mul(self.secret.clone().into_scalar()).into_affine()
+        multiplicand
+            .mul(self.secret.clone().into_scalar())
+            .into_affine()
     }
 }
 

@@ -11,7 +11,7 @@ use crate::{
     },
     curve::KimchiCurve,
 };
-use ark_ff::{BitIteratorLE, BigInteger, Field, PrimeField};
+use ark_ff::{BigInteger, BitIteratorLE, Field, PrimeField};
 use std::array;
 use std::marker::PhantomData;
 

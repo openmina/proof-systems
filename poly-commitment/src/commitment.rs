@@ -739,6 +739,13 @@ impl<G: CommitmentCurve> SRS<G> {
 
             let s = b_poly_coefficients(&chal);
 
+            debug_assert!(s.len() <= scalars.len());
+
+            // TODO: implement a better solution at type/wire level, for now we just bail out...
+            if s.len() > scalars.len() {
+                return false;
+            }
+
             let neg_rand_base_i = -rand_base_i;
 
             // TERM
