@@ -137,7 +137,7 @@ impl<F: Field, const B: usize, const N: usize> ForeignElement<F, B, N> {
 impl<F: PrimeField, const B: usize, const N: usize> ForeignElement<F, B, N> {
     /// Initializes a new foreign element from an element in the native field
     pub fn from_field(field: F) -> Self {
-        Self::from_biguint(field.into())
+        Self::from_biguint(field.to_biguint())
     }
 }
 

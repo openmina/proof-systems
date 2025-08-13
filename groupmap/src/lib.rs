@@ -26,6 +26,8 @@ pub trait GroupMap<F> {
     fn setup() -> Self;
     fn to_group(&self, u: F) -> (F, F);
     fn batch_to_group_x(&self, ts: Vec<F>) -> Vec<[F; 3]>;
+    /// For debug only
+    fn composition(&self) -> Vec<F>;
 }
 
 #[derive(Clone, Copy)]
@@ -180,5 +182,23 @@ impl<G: SWCurveConfig> GroupMap<G::BaseField> for BWParameters<G> {
 
     fn to_group(&self, t: G::BaseField) -> (G::BaseField, G::BaseField) {
         get_xy(self, t)
+    }
+
+    fn composition(&self) -> Vec<G::BaseField> {
+        let Self {
+            u,
+            fu,
+            sqrt_neg_three_u_squared_minus_u_over_2,
+            sqrt_neg_three_u_squared,
+            inv_three_u_squared,
+        } = self;
+
+        vec![
+            *u,
+            *fu,
+            *sqrt_neg_three_u_squared_minus_u_over_2,
+            *sqrt_neg_three_u_squared,
+            *inv_three_u_squared,
+        ]
     }
 }
