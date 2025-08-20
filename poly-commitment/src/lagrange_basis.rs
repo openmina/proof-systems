@@ -2,7 +2,7 @@ use ark_ec::AffineRepr;
 use ark_poly::{EvaluationDomain, Radix2EvaluationDomain as D};
 use cache::LagrangeCache;
 use mina_curves::pasta::{Pallas, Vesta};
-use poly_commitment::{commitment::CommitmentCurve, ipa::SRS, SRS as _};
+use crate::{commitment::CommitmentCurve, ipa::SRS, SRS as _};
 use std::env;
 
 pub trait WithLagrangeBasis<G: AffineRepr> {
@@ -54,12 +54,13 @@ mod cache {
     use core::marker::PhantomData;
     use mina_curves::pasta::{Pallas, Vesta};
     use once_cell::sync::Lazy;
-    use poly_commitment::PolyComm;
     use std::{
         env, fs,
         fs::File,
         path::{Path, PathBuf},
     };
+
+    use crate::PolyComm;
 
     pub trait LagrangeCache<G: AffineRepr> {
         type CacheKey;

@@ -6,6 +6,7 @@ pub mod ipa;
 pub mod kzg;
 pub mod precomputed_srs;
 pub mod utils;
+pub mod lagrange_basis;
 
 // Exposing property based tests for the SRS trait
 pub mod pbt_srs;

@@ -29,7 +29,9 @@ pub mod projective;
 /// SRS
 pub mod srs;
 
-pub mod lagrange_basis;
+pub mod lagrange_basis{
+    pub use poly_commitment::lagrange_basis::WithLagrangeBasis;
+}
 pub use lagrange_basis::WithLagrangeBasis;
 
 /// Indexes
